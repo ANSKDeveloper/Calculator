@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .Father {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgb(232, 238, 238);
+        }
+        
+        .Son {
+            width: 320px;
+            background-color: rgb(86, 81, 148);
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        
+        button {
+            height: 65px;
+            width: 65px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: rgb(102, 102, 233);
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            margin: 4px;
+            transition: all 0.3s linear;
+        }
+        
+        button:hover {
+            background-color: rgb(49, 49, 136);
+        }
+        
+        input {
+            font-weight: bold;
+            cursor: pointer;
+            background-color: rgb(102, 102, 233);
+            color: white;
+            outline: none;
+            border: none;
+            width: 100%;
+            border-radius: 3px;
+            margin: 5px;
+            text-align: right;
+            font-size: 40px;
+            font-weight: bold;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+        
+        .one {
+            background-color: rgb(243, 47, 33);
+        }
+        
+        .result {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Father">
+        <div class="Son">
+            <input type="text" id="txt">
+            <button class="one" onclick="ClearMe()">CC</button>
+            <button class="one" onclick="Clear()">C</button>
+            <button class="one" onclick="GetValue('%')">%</button>
+            <button class="one" onclick="GetValue('/')">/</button>
+            <button onclick="GetValue('7')">7</button>
+            <button onclick="GetValue('8')">8</button>
+            <button onclick="GetValue('9')">9</button>
+            <button class="one" onclick="GetValue('*')">x</button>
+            <button onclick="GetValue('4')">4</button>
+            <button onclick="GetValue('5')">5</button>
+            <button onclick="GetValue('6')">6</button>
+            <button class="one" onclick="GetValue('-')">-</button>
+            <button onclick="GetValue('1')">1</button>
+            <button onclick="GetValue('2')">2</button>
+            <button onclick="GetValue('3')">3</button>
+            <button class="one" onclick="GetValue('+')">+</button>
+            <button onclick="GetValue('00')">00</button>
+            <button onclick="GetValue('0')">0</button>
+            <button onclick="GetValue('.')">.</button>
+            <button class="result" onclick="Calc()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const res = document.getElementById("txt");
+
+        function Calc() {
+
+            document.getElementById("txt").value = eval(res.value);
+        }
+
+        function GetValue(a) {
+            var res = document.getElementById("txt").value;
+            if (res == "00" || res == "0") {
+                document.getElementById("txt").value = 0;
+            } else {
+                res = res += a;
+                document.getElementById("txt").value = res;
+
+            }
+
+
+
+
+
+        }
+
+        function ClearMe() {
+            var a = document.getElementById("txt").value;
+            a = a.toString().slice(0, -1);
+            document.getElementById("txt").value = a;
+        }
+
+        function Clear() {
+            document.getElementById("txt").value = "";
+        }
+    </script>
+
+</body>
+
+</html>
